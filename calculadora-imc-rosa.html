@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora de IMC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9d5e5;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #fff;
+      text-align: center;
+      padding: 1em;
+    }
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 2em;
+    }
+    form, #resultado {
+      background: white;
+      padding: 2em;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    input, button {
+      width: 100%;
+      padding: 0.75em;
+      margin-bottom: 1em;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #e89abe;
+      color: white;
+      border: none;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #e0729c;
+    }
+  </style>
+</head>
+<body>
+  <header><h1>Calculadora de IMC</h1></header>
+  <main>
+    <form id="form-imc">
+      <label for="peso">Peso (kg):</label>
+      <input type="number" id="peso" required />
+      <label for="altura">Altura (cm):</label>
+      <input type="number" id="altura" required />
+      <button type="submit">Calcular</button>
+    </form>
+    <div id="resultado">
+      <h3>Seu IMC é: <span id="valor-imc"></span></h3>
+      <p id="classificacao"></p>
+    </div>
+  </main>
+  <footer><p>&copy; 2025</p></footer>
+  <script>
+    function calcularIMC(peso, altura) {
+      return peso / ((altura / 100) ** 2);
+    }
+    function classificarIMC(imc) {
+      if (imc < 18.5) return 'Abaixo do peso';
+      if (imc < 24.9) return 'Peso normal';
+      if (imc < 29.9) return 'Sobrepeso';
+      return 'Obesidade';
+    }
+    document.getElementById('form-imc').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const peso = parseFloat(document.getElementById('peso').value);
+      const altura = parseFloat(document.getElementById('altura').value);
+      const imc = calcularIMC(peso, altura);
+      document.getElementById('valor-imc').textContent = imc.toFixed(2);
+      document.getElementById('classificacao').textContent = classificarIMC(imc);
+    });
+  </script>
+</body>
+</html>

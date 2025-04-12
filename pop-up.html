@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pop-up com Botão</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d4f8e8;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #fff;
+      text-align: center;
+      padding: 1em;
+    }
+    main {
+      text-align: center;
+      padding: 2em;
+    }
+    button {
+      background-color: #9ee0b3;
+      color: white;
+      border: none;
+      padding: 1em 2em;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #7bcf98;
+    }
+  </style>
+</head>
+<body>
+  <header><h1>Pop-up ao Clicar</h1></header>
+  <main>
+    <button id="myButton">Clique em mim</button>
+  </main>
+  <footer><p>&copy; 2025</p></footer>
+  <script>
+    document.getElementById('myButton').addEventListener('click', function () {
+      alert('Botão clicado!');
+    });
+  </script>
+</body>
+</html>
